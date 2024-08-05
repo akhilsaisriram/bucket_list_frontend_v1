@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@deck.gl/react": "^9.0.24",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/inter": "^5.0.18",
+    "@mapbox/polyline": "^1.2.1",
     "@mui/icons-material": "^5.15.19",
     "@mui/joy": "^5.0.0-beta.36",
     "@mui/material": "^5.15.19",
@@ -20,8 +22,13 @@
     "bootstrap": "^5.3.3",
     "crypto-js": "^4.2.0",
     "firebase": "^10.12.2",
+    "framer-motion": "^11.3.19",
     "gsap": "^3.12.5",
+    "leaflet": "^1.9.4",
+    "mapbox-gl": "^3.5.2",
+    "maplibre-gl": "^4.5.1",
     "pako": "^2.1.0",
+    "polyline-encoded": "^0.0.9",
     "react": "^18.3.1",
     "react-animated-heart": "^0.0.8",
     "react-bootstrap": "^2.10.2",
@@ -29,13 +36,17 @@
     "react-dropzone": "^14.2.3",
     "react-file-base64": "^1.0.3",
     "react-google-autocomplete": "^2.7.3",
+    "react-icons": "^5.2.1",
+    "react-leaflet": "^4.2.1",
+    "react-map-gl": "^7.1.7",
     "react-pdf": "^9.0.0",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-scroll-parallax": "^3.4.5",
+    "react-select": "^5.8.0",
     "socket.io-client": "^4.7.5",
-    "styled-components": "^6.1.11",
+    "styled-components": "^6.1.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -61,5 +72,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
   }
 }

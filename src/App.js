@@ -7,6 +7,9 @@ import Login from './Login_reg/Login';
 import Dashboard from './Dashboard';
 import Chat from "./chat/Connectpeople"
 import Add_feed from"./pages/Add_feed"
+import Test from './test/Test'
+import Steganography from './chat/Steganography';
+import Map from './maps/Map';
 export const store = createContext();
 function App() {
  
@@ -17,6 +20,8 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/a' element={<Test/>}/>
+        <Route path='/aa' element={<Map/>}/>
         <Route path='/Dashbord' element={<Dashboard/>}/>
         <Route path='/Dashbord/chat' element={<Chat/>}/>
         <Route path='/Dashbord/Add_feed' element={<Add_feed/>}/>

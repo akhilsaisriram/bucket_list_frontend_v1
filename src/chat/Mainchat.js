@@ -10,10 +10,13 @@ import BlurOnIcon from '@mui/icons-material/BlurOn';
 import pako from "pako";
 import { Image } from "antd";
 import axios from "axios";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-function Mainchat({ socket, username, room ,pid,pid_chage}) {
+function Mainchat({ socket, username, room ,pid,pid_chage,otheruser}) {
   ////////////////////////////////////
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   ////////////////////////////////////////
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -307,7 +310,7 @@ const [noonline,setnum]=useState();
       <div class="container-fluid">
         <div class="row">
  
-          <div class="col-sm-6">
+          <div >
             {" "}
             <div
               style={{
@@ -326,7 +329,7 @@ const [noonline,setnum]=useState();
                   <center>
                     <Box
                       sx={{
-                        width: 570,
+                        width:isMobile? "100%":570,
                         height: 500,
                         //  margin: 4.5,
                         //  marginLeft: 2,
@@ -344,7 +347,8 @@ const [noonline,setnum]=useState();
                         {" "}
                         <span>
                           {" "}
-                          <h className="bodyhead">Live Chat { onlineUsers.length ===0?<></>:<>{onlineUsers.length >=2 ?<><BlurOnIcon style={{color:"green"}}></BlurOnIcon></>:<><BlurOnIcon style={{color:"red"}}></BlurOnIcon></>}</>}</h>{" "}
+                          
+                          <h className="bodyhead">Live Chat {otheruser !=="k" ?<h>with {otheruser}</h>:<></>}{ onlineUsers.length ===0?<></>:<>{onlineUsers.length >=2 ?<><BlurOnIcon style={{color:"green"}}></BlurOnIcon></>:<><BlurOnIcon style={{color:"red"}}></BlurOnIcon></>}</>}</h>{" "}
                           <h>
                             {/* {persontyping.length ? (
                               <h style={{ text: "bold", color: "red" }}>
