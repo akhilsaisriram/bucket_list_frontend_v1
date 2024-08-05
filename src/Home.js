@@ -16,6 +16,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { Image, Space } from "antd";
+import { motion } from "framer-motion"
 import "./Fotter.css";
 import "./App.css";
 import {
@@ -102,6 +103,7 @@ const Home = () => {
   };
   return (
     <div>
+   
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           position="fixed"
@@ -134,7 +136,7 @@ const Home = () => {
             >
               𝙸𝚝 𝚛𝚒𝚍𝚎𝚜
             </Typography>
-
+          
             {!isMobile && (
               <>
                 <Button
@@ -174,9 +176,10 @@ const Home = () => {
             )}
 
             <Box sx={{ flexGrow: 1 }} />
-            <Button
+            <motion.button
               color="inherit"
-              sx={{
+              whileHover={{scale:1.2,backgroundColor:"gray",color:"white"}}
+              style={{
                 backgroundColor: "white",
                 color: "black",
                 borderRadius: "20px",
@@ -190,10 +193,11 @@ const Home = () => {
               onClick={handleClickl}
             >
               Login
-            </Button>
-            <Button
+            </motion.button>
+            <motion.button
               color="inherit"
-              sx={{
+              whileHover={{scale:1.2,backgroundColor:"gray",color:"white"}}
+              style={{
                 backgroundColor: "white",
                 color: "black",
                 borderRadius: "20px",
@@ -206,7 +210,7 @@ const Home = () => {
               onClick={handleClick}
             >
               Sign up
-            </Button>
+            </motion.button>
           </Toolbar>
         </AppBar>
       </Box>

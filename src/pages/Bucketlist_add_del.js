@@ -17,7 +17,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { DatePicker } from "antd";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-const Bucketlist_add_del = ({ onBucketChange,sname }) => {
+const Bucketlist_add_del = ({ onBucketChange, sname }) => {
   const [showInput, setShowInput] = useState(false);
 
   const handleIconClick = () => {
@@ -27,34 +27,42 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
   const [bucketList, setBucketList] = useState([]);
   const [curloc, setcurloc] = useState(null);
 
-  const onChange_date = async (item, dateString,index) => {
+  const onChange_date = async (item, dateString, index) => {
     // Validate item and dateString
-    if (!item || Object.keys(item).length === 0 || !dateString || dateString.length === 0) {
-      console.log('Invalid item or date.');
+    if (
+      !item ||
+      Object.keys(item).length === 0 ||
+      !dateString ||
+      dateString.length === 0
+    ) {
+      console.log("Invalid item or date.");
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/update_list', {
-        token:sessionStorage.getItem("token"),
-        bucket: item,
-        date: dateString
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/update_list",
+        {
+          token: sessionStorage.getItem("token"),
+          bucket: item,
+          date: dateString,
+        }
+      );
 
       const updatedBucketList = [...bucketList];
       updatedBucketList[index].Date = dateString;
       setBucketList(updatedBucketList);
-      onBucketChange()
-    //  alert(`Response: ${ response.data.error}`);
+      onBucketChange();
+      //  alert(`Response: ${ response.data.error}`);
     } catch (error) {
-     console.log('Error updating date:', error);
-   
-      alert('An error occurred while updating the date.');
+      console.log("Error updating date:", error);
+
+      alert("An error occurred while updating the date.");
     }
   };
 
   ////token auth//////////////////
-  const [name,setname]=useState("")
+  const [name, setname] = useState("");
   useEffect(() => {
     const token = sessionStorage.getItem("token");
 
@@ -97,7 +105,7 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
       console.log("Response:", response.data);
       setBucketList((prevList) => [...prevList, text]);
       setText("");
-      onBucketChange()
+      onBucketChange();
       // Handle the response as needed
     } catch (error) {
       console.error("Error:", error);
@@ -123,9 +131,9 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
         }
       );
       console.log("Response:", response.data);
-      onBucketChange()
+      onBucketChange();
       alert("location updated");
-      
+
       //    setShowInput(false)
       // Handle the response as needed
     } catch (error) {
@@ -145,7 +153,7 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
       setBucketList((prevList) => prevList.filter((item) => item !== kk));
       console.log("Element deleted:", response.data);
       // Handle success
-      onBucketChange()
+      onBucketChange();
     } catch (error) {
       console.error("Error delete:", error);
       // Handle error
@@ -199,7 +207,8 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
               {/* <h1 className="bodyhead">Bucket list </h1> */}
               <div>
                 <br></br>
-                <div>{sname(name)}
+                <div>
+                  {sname(name)}
                   {bucketList && bucketList.length > 0 ? (
                     <div>
                       {bucketList.map((item, index) => (
@@ -218,32 +227,33 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
                             key={index}
                           >
                             <p>{item.City}</p>{" "}
-                            <div >
-                            {item.Date && <p>Date: {item.Date}</p>}
-                       
+                            <div>
+                              {item.Date && <p>Date: {item.Date}</p>}
+
                               <div
                                 className={`datepicker-container ${
                                   activeDatePickerIndex === index ? "show" : ""
                                 }`}
                               >
                                 <DatePicker
-                                    onChange={(date, dateString) =>    onChange_date(item, dateString, index)}
-                                  
-                           
+                                  onChange={(date, dateString) =>
+                                    onChange_date(item, dateString, index)
+                                  }
                                 />
                               </div>
-                      
                             </div>
-                            <div>         <IconButton
+                            <div>
+                              {" "}
+                              <IconButton
                                 onClick={() => toggleDatePicker(index)}
                                 style={{ cursor: "pointer" }}
                               >
                                 <CalendarMonthIcon />
                               </IconButton>
-                            <IconButton onClick={() => handleDelete(item)}>
-                              <CloseIcon />
-                            </IconButton></div>
-                   
+                              <IconButton onClick={() => handleDelete(item)}>
+                                <CloseIcon />
+                              </IconButton>
+                            </div>
                           </Box>
                         </div>
                       ))}
@@ -256,6 +266,9 @@ const Bucketlist_add_del = ({ onBucketChange,sname }) => {
               </div>
             </center>
           </div>
+          <br></br>
+          <br></br>
+        
           <Box
             sx={{
               marginLeft: 2,
