@@ -1,0 +1,16 @@
+.white-text .MuiInputBase-input {
+    color: white !important;
+  }
+  
+  .white-text .MuiInputLabel-root {
+    color: white !important;
+  }
+  
+  .white-text .MuiFormLabel-root {
+    color: white !important;
+  }
+  
+  .white-text .MuiOutlinedInput-notchedOutline {
+    border-color: white !important;
+  }
+  
